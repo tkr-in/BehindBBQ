@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BehindBBQ — Your BBQ Day, Start to Finish</title>
+  <meta name="description" content="BehindBBQ guides you through your entire outdoor BBQ day. Check weather, shop supplies, beat traffic, and find a shower on the way home." />
+  <meta property="og:title" content="BehindBBQ" />
+  <meta property="og:description" content="Your BBQ Day, Start to Finish" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coal: #1a1714; --ash: #2c2825; --ember: #e8630a;
+      --ember-light: #f5893a; --smoke: #8a8078; --cream: #f5f0e8;
+      --border: rgba(232,99,10,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--coal); color: var(--cream); }
+    a { color: var(--ember); text-decoration: none; }
+    a:hover { color: var(--ember-light); }
+
+    nav {
+      background: var(--ash); border-bottom: 1px solid var(--border);
+      padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--ember); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--smoke); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cream); }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(232,99,10,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 3px;
+      color: var(--ember); text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 7vw, 88px); font-weight: 900;
+      line-height: 1.05; color: #fff;
+      max-width: 860px; margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--ember); }
+    .hero p {
+      font-size: 18px; color: var(--smoke);
+      max-width: 520px; line-height: 1.7; margin-bottom: 48px;
+    }
+    .cta-group { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--ember); color: #fff;
+      padding: 14px 32px; border-radius: 6px;
+      font-size: 15px; font-weight: 600; letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--ember-light); color: #fff; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--cream);
+      padding: 14px 32px; border-radius: 6px; border: 1px solid var(--border);
+      font-size: 15px; font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--ember); color: var(--ember); }
+
+    /* STEPS */
+    .steps { padding: 100px 24px; max-width: 960px; margin: 0 auto; }
+    .steps-label {
+      text-align: center; font-size: 12px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--ember); margin-bottom: 16px;
+    }
+    .steps h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: #fff; margin-bottom: 60px;
+    }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .step-card {
+      background: var(--ash); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 24px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .step-card:hover { border-color: var(--ember); transform: translateY(-3px); }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px; font-weight: 900;
+      color: rgba(232,99,10,0.12); line-height: 1;
+      position: absolute; top: 16px; right: 20px;
+    }
+    .step-icon { font-size: 32px; margin-bottom: 16px; }
+    .step-card h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .step-card p { font-size: 14px; color: var(--smoke); line-height: 1.7; }
+
+    /* FEATURES */
+    .features { background: var(--ash); padding: 100px 24px; }
+    .features-inner { max-width: 860px; margin: 0 auto; }
+    .features h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+      color: #fff; margin-bottom: 48px; text-align: center;
+    }
+    .feature-list { display: flex; flex-direction: column; gap: 20px; }
+    .feature-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px; background: var(--coal);
+      border-radius: 12px; border: 1px solid var(--border);
+    }
+    .feature-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--ember); flex-shrink: 0; margin-top: 6px;
+    }
+    .feature-item h4 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .feature-item p { font-size: 14px; color: var(--smoke); line-height: 1.7; }
+
+    /* DOWNLOAD CTA */
+    .download-cta {
+      padding: 100px 24px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .download-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(232,99,10,0.08) 0%, transparent 70%);
+    }
+    .download-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+      color: #fff; margin-bottom: 16px; position: relative;
+    }
+    .download-cta p { color: var(--smoke); font-size: 16px; margin-bottom: 40px; position: relative; }
+
+    /* FOOTER */
+    footer {
+      background: var(--ash); border-top: 1px solid var(--border);
+      padding: 40px 24px; text-align: center;
+    }
+    footer p { color: var(--smoke); font-size: 13px; margin-bottom: 12px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .footer-links a { color: var(--smoke); font-size: 13px; }
+    .footer-links a:hover { color: var(--ember); }
+
+    @media (max-width: 600px) {
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BehindBBQ</div>
+  <div class="nav-links">
+    <a href="marketing.html">Features</a>
+    <a href="support.html">Support</a>
+    <a href="privacy-policy.html">Privacy</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Available on the App Store</div>
+  <h1>Your BBQ Day,<br /><em>Start to Finish</em></h1>
+  <p>BehindBBQ is the only app that guides you through your entire outdoor cooking day — from checking the weather to finding a shower on the way home.</p>
+  <div class="cta-group">
+    <a href="#" class="btn-primary">Download on the App Store</a>
+    <a href="marketing.html" class="btn-secondary">Learn More</a>
+  </div>
+</section>
+
+<!-- 4 STEPS -->
+<section class="steps">
+  <div class="steps-label">The Journey</div>
+  <h2>Four steps. One app.</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-icon">&#9925;</div>
+      <h3>Weather</h3>
+      <p>Get a BBQ Weather Score and hourly forecast before you leave home.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-icon">&#128722;</div>
+      <h3>BBQ Store</h3>
+      <p>Find open stores nearby for charcoal, grills, and supplies.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-icon">&#128663;</div>
+      <h3>Traffic</h3>
+      <p>See live road conditions and the best route to your campsite.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-icon">&#128703;</div>
+      <h3>Showroom</h3>
+      <p>Find a shower or onsen on your way home to clean up after a great day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <h2>Everything you need for the perfect BBQ day</h2>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>BBQ Weather Score</h4>
+          <p>A single score out of 100 tells you instantly whether conditions are ideal for outdoor cooking, with smart tips tailored to the day.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Live Store Map</h4>
+          <p>Pinpoint the nearest open BBQ stores with real-time status. Navigate or call directly from the app.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Road-by-Road Traffic</h4>
+          <p>See exactly which roads are clear or congested on your route to camp, with estimated delay times and alternate route suggestions.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Shower and Onsen Finder</h4>
+          <p>Discover nearby shower facilities, gyms, and onsens with pricing and hours — so you can freshen up before heading home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="download-cta">
+  <h2>Ready to fire it up?</h2>
+  <p>Download BehindBBQ and make every outdoor cooking day effortless.</p>
+  <a href="#" class="btn-primary">Download on the App Store</a>
+</section>
+
+<footer>
+  <p>BehindBBQ &mdash; Your BBQ Day, Start to Finish</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="marketing.html">Features</a>
+    <a href="support.html">Support</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-use.html">Terms of Use</a>
+  </div>
+  <p style="margin-top:16px;">&copy; 2025 BehindBBQ. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
