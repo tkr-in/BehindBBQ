@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — BehindBBQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coal: #1a1714; --ash: #2c2825; --ember: #e8630a;
+      --ember-light: #f5893a; --smoke: #8a8078; --cream: #f5f0e8;
+      --border: rgba(232,99,10,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--coal); color: var(--cream); line-height: 1.7; }
+    a { color: var(--ember); text-decoration: none; }
+    nav {
+      background: var(--ash); border-bottom: 1px solid var(--border);
+      padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: var(--ember); }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: var(--smoke); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--cream); }
+
+    .page-hero { padding: 72px 24px 48px; text-align: center; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .page-hero p { color: var(--smoke); font-size: 15px; max-width: 480px; margin: 0 auto; }
+
+    .content { max-width: 800px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    /* FAQ */
+    .faq-section h2 {
+      font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700;
+      color: #fff; margin-bottom: 32px;
+    }
+    .faq-item {
+      border: 1px solid var(--border); border-radius: 12px;
+      margin-bottom: 12px; overflow: hidden;
+    }
+    .faq-question {
+      padding: 18px 20px; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--ash); font-size: 15px; font-weight: 600; color: var(--cream);
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: #353029; }
+    .faq-answer {
+      padding: 0 20px; max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: var(--coal);
+    }
+    .faq-answer.open { max-height: 300px; padding: 16px 20px; }
+    .faq-answer p { color: #c8bfb4; font-size: 14px; line-height: 1.8; margin: 0; }
+    .faq-arrow { font-size: 18px; color: var(--ember); transition: transform 0.3s; }
+    .faq-arrow.open { transform: rotate(180deg); }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+    /* CONTACT */
+    .contact-section h2 {
+      font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700;
+      color: #fff; margin-bottom: 16px;
+    }
+    .contact-section p { color: #c8bfb4; font-size: 15px; margin-bottom: 28px; }
+    .contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .contact-card {
+      background: var(--ash); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .contact-card:hover { border-color: var(--ember); transform: translateY(-2px); }
+    .contact-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .contact-card h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .contact-card p { font-size: 13px; color: var(--smoke); margin-bottom: 14px; }
+    .contact-card a {
+      display: inline-block; background: var(--ember); color: #fff;
+      padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .contact-card a:hover { background: var(--ember-light); }
+
+    footer { background: var(--ash); border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    footer p { color: var(--smoke); font-size: 13px; margin-bottom: 10px; }
+    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .footer-links a { color: var(--smoke); font-size: 13px; }
+    .footer-links a:hover { color: var(--ember); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">BehindBBQ</a>
+  <div class="nav-links">
+    <a href="marketing.html">Features</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms-of-use.html">Terms</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Support</h1>
+  <p>Find answers to common questions or get in touch with our team.</p>
+</div>
+
+<div class="content">
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Why does BehindBBQ need my location?
+        <span class="faq-arrow">&#8964;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Location access is used to find nearby BBQ stores, show relevant traffic conditions, and locate shower and onsen facilities near your current position. Your location is never stored on our servers and is only used while the App is active.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How is the BBQ Weather Score calculated?
+        <span class="faq-arrow">&#8964;</span>
+      </div>
+      <div class="faq-answer">
+        <p>The BBQ Weather Score is calculated from a combination of temperature, wind speed, precipitation probability, humidity, and UV index. A score closer to 100 means ideal BBQ conditions. The score updates hourly based on live weather data.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        The store hours or locations seem incorrect. What should I do?
+        <span class="faq-arrow">&#8964;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Store information is sourced from third-party location databases and may occasionally be outdated. We recommend calling ahead to confirm hours. If you notice a consistent error, please contact us so we can flag it for correction.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        Is BehindBBQ available outside Japan?
+        <span class="faq-arrow">&#8964;</span>
+      </div>
+      <div class="faq-answer">
+        <p>BehindBBQ is currently optimized for use in Japan. The core features such as weather and traffic will work in other regions, but store and showroom recommendations may be limited outside Japan. Broader regional support is planned for future updates.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How do I navigate to a store or showroom from the App?
+        <span class="faq-arrow">&#8964;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Tap on any store or showroom card to expand it, then tap the "Navigate" button. This will open Apple Maps with directions from your current location to the selected destination.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        How do I delete the App and my data?
+        <span class="faq-arrow">&#8964;</span>
+      </div>
+      <div class="faq-answer">
+        <p>Simply delete the App from your device to remove all locally stored data. Since BehindBBQ does not maintain a user account system, there is no server-side data to delete. If you have concerns, contact us at privacy@behindbbq.app.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr />
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <h2>Get in Touch</h2>
+    <p>Still need help? Our team is happy to assist you.</p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon">&#9993;</div>
+        <h4>Email Support</h4>
+        <p>For general questions and feedback</p>
+        <a href="mailto:support@behindbbq.app">Send Email</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#128272;</div>
+        <h4>Privacy Inquiries</h4>
+        <p>Questions about your data and privacy</p>
+        <a href="mailto:privacy@behindbbq.app">Contact Privacy</a>
+      </div>
+      <div class="contact-card">
+        <div class="icon">&#128196;</div>
+        <h4>Report a Bug</h4>
+        <p>Found something wrong? Let us know</p>
+        <a href="mailto:bugs@behindbbq.app">Report Bug</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>BehindBBQ &mdash; Your BBQ Day, Start to Finish</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="marketing.html">Features</a>
+    <a href="support.html">Support</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-use.html">Terms of Use</a>
+  </div>
+  <p style="margin-top:16px;">&copy; 2025 BehindBBQ. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const arrow = el.querySelector('.faq-arrow');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-arrow').forEach(a => a.classList.remove('open'));
+    if (!isOpen) { answer.classList.add('open'); arrow.classList.add('open'); }
+  }
+</script>
+
+</body>
+</html>
