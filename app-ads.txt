@@ -1,0 +1,16 @@
+# app-ads.txt for BehindBBQ
+# https://behindbbq.app/app-ads.txt
+#
+# This file authorizes advertising networks to sell inventory
+# for the BehindBBQ mobile application.
+#
+# Format: <SSP/Exchange Domain>, <Publisher ID>, <Relationship>, <Certification Authority ID>
+#
+# Currently BehindBBQ does not serve third-party advertisements.
+# This file is provided for compliance purposes.
+#
+# If advertising partners are added in the future, their entries
+# will be listed below in the standard IAB app-ads.txt format.
+#
+# Last updated: June 1, 2025
+# Contact: ads@behindbbq.app
